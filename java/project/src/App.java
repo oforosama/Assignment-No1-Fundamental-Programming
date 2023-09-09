@@ -15,7 +15,6 @@ public class App {
         inputStudentMarks(scanner);
 
         System.out.println("Assignment Name" + assignmentName);
-        System.out.println("Marks of Student" + studentMarks);
         // Close the scanner when done
         scanner.close();
     }
