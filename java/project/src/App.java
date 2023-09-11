@@ -19,6 +19,9 @@ public class App {
 
         // F5: Print Highest and Lowest Marks
         printHighestAndLowestMarks();
+
+        // F6: Calculate Mean and Standard Deviation
+        calculateMeanAndStdDev();
         // Close the scanner when done
         scanner.close();
     }
@@ -69,32 +72,53 @@ public class App {
         System.out.println("Invalid mark: " + mark + ". Please enter a mark between 0 and 30.");
     }
 
-        // F4: Print Assignment Name and Student Marks
-        public static void printAssignmentAndMarks() {
-            System.out.println("Assignment Name: " + assignmentName);
-            System.out.println("Students' Marks:");
-    
-            for (int i = 0; i < studentMarks.length; i++) {
-                System.out.println("Student " + (i + 1) + ": " + studentMarks[i]);
+    // F4: Print Assignment Name and Student Marks
+    public static void printAssignmentAndMarks() {
+        System.out.println("Assignment Name: " + assignmentName);
+        System.out.println("Students' Marks:");
+
+        for (int i = 0; i < studentMarks.length; i++) {
+            System.out.println("Student " + (i + 1) + ": " + studentMarks[i]);
+        }
+    }
+
+    // F5: Print Highest and Lowest Marks
+    public static void printHighestAndLowestMarks() {
+        int highestMark = studentMarks[0];
+        int lowestMark = studentMarks[0];
+
+        for (int i = 1; i < studentMarks.length; i++) {
+            if (studentMarks[i] > highestMark) {
+                highestMark = studentMarks[i];
+            }
+            if (studentMarks[i] < lowestMark) {
+                lowestMark = studentMarks[i];
             }
         }
-    
-        // F5: Print Highest and Lowest Marks
-        public static void printHighestAndLowestMarks() {
-            int highestMark = studentMarks[0];
-            int lowestMark = studentMarks[0];
-    
-            for (int i = 1; i < studentMarks.length; i++) {
-                if (studentMarks[i] > highestMark) {
-                    highestMark = studentMarks[i];
-                }
-                if (studentMarks[i] < lowestMark) {
-                    lowestMark = studentMarks[i];
-                }
-            }
-    
-            System.out.println("Highest Mark: " + highestMark);
-            System.out.println("Lowest Mark: " + lowestMark);
+
+        System.out.println("Highest Mark: " + highestMark);
+        System.out.println("Lowest Mark: " + lowestMark);
+    }
+
+        // F6: Calculate Mean and Standard Deviation
+    public static void calculateMeanAndStdDev() {
+        int sum = 0;
+        for (int mark : studentMarks) {
+            sum += mark;
         }
+
+        double mean = (double) sum / studentMarks.length;
+
+        double variance = 0;
+        for (int mark : studentMarks) {
+            variance += Math.pow(mark - mean, 2);
+        }
+        variance /= studentMarks.length;
+
+        double stdDev = Math.sqrt(variance);
+
+        System.out.println("Mean: " + mean);
+        System.out.println("Standard Deviation: " + stdDev);
+    }
 
 }
