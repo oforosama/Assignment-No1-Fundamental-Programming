@@ -14,7 +14,11 @@ public class App {
         // F2: Input Students' Marks
         inputStudentMarks(scanner);
 
-        System.out.println("Assignment Name" + assignmentName);
+        // F4: Print Assignment Name and Student Marks
+        printAssignmentAndMarks();
+
+        // F5: Print Highest and Lowest Marks
+        printHighestAndLowestMarks();
         // Close the scanner when done
         scanner.close();
     }
@@ -65,5 +69,32 @@ public class App {
         System.out.println("Invalid mark: " + mark + ". Please enter a mark between 0 and 30.");
     }
 
+        // F4: Print Assignment Name and Student Marks
+        public static void printAssignmentAndMarks() {
+            System.out.println("Assignment Name: " + assignmentName);
+            System.out.println("Students' Marks:");
+    
+            for (int i = 0; i < studentMarks.length; i++) {
+                System.out.println("Student " + (i + 1) + ": " + studentMarks[i]);
+            }
+        }
+    
+        // F5: Print Highest and Lowest Marks
+        public static void printHighestAndLowestMarks() {
+            int highestMark = studentMarks[0];
+            int lowestMark = studentMarks[0];
+    
+            for (int i = 1; i < studentMarks.length; i++) {
+                if (studentMarks[i] > highestMark) {
+                    highestMark = studentMarks[i];
+                }
+                if (studentMarks[i] < lowestMark) {
+                    lowestMark = studentMarks[i];
+                }
+            }
+    
+            System.out.println("Highest Mark: " + highestMark);
+            System.out.println("Lowest Mark: " + lowestMark);
+        }
 
 }
